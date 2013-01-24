@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.cloudfoundry</groupId>
+  <artifactId>swing-cloud</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>swing-cloud</name>
+  <url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.framework.version>3.2.0.RELEASE</spring.framework.version>
+		<spring.security.oauth.version>1.0.0.RELEASE</spring.security.oauth.version>
+		<jackson.version>1.9.11</jackson.version>
+	</properties>
+
+  <dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.framework.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>1.0.0.RC1</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-jdbc</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.cloudfoundry</groupId>
+			<artifactId>cloudfoundry-client-lib</artifactId>
+			<version>0.8.2</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<artifactId>jms</artifactId>
+					<groupId>javax.jms</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jmxtools</artifactId>
+					<groupId>com.sun.jdmk</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jmxri</artifactId>
+					<groupId>com.sun.jmx</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>mail</artifactId>
+					<groupId>javax.mail</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+  </dependencies>
+	
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-jar-plugin</artifactId>
+  			<version>2.4</version>
+  			<configuration>
+	          <archive>
+	            <manifest>
+	              <addClasspath>true</addClasspath>
+	              <classpathPrefix>lib/</classpathPrefix>
+	              <mainClass>com.cloudfoundry.vmc.swing.frame.Main</mainClass>
+	            </manifest>
+	          </archive>
+	        </configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+  <repositories>
+        <repository>
+            <id>org.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </repository>
+    </repositories>
+</project>
